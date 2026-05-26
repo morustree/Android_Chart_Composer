@@ -72,7 +72,7 @@ data class AxisTitleSpecs(
     val verticalPosition: VerticalPosition = VerticalPosition.Bottom,
     val horizontalPosition: HorizontalPosition = HorizontalPosition.Left,
     val orientation: AxisTitleOrientation = AxisTitleOrientation.Horizontal,
-    val width: Dp = 16.dp // Largura da área do título (para eixos verticais)
+    val width: Dp = 8.dp // Largura da área do título (para eixos verticais)
 )
 
 @Immutable
@@ -81,7 +81,7 @@ data class AxisLabelsSpecs(
     val style: TextStyleSpecs = TextStyleSpecs(fontSize = 10.sp),
     val format: String = "%.2f",
     val step: Double = 0.0,
-    val width: Dp = 56.dp, // Largura da área dos rótulos (para eixos verticais)
+    val width: Dp = 48.dp, // Largura da área dos rótulos (para eixos verticais)
     val padding: Dp = 8.dp  // Espaçamento entre o rótulo e o gráfico
 )
 
@@ -109,7 +109,7 @@ data class LegendSpecs(
     val isVisible: Boolean = true,
     val backgroundColor: Color = Color.Unspecified,
     val textColor: Color = Color.Unspecified,
-    val padding: Dp = 8.dp,
+    val padding: Dp = 6.dp,
     val elevation: Dp = 6.dp,
     val initialOffset: Offset = Offset(20f, 20f)
 )
@@ -131,7 +131,7 @@ data class LineSpecs(
 @Immutable
 data class ChartSpecs(
     val backgroundColor: Color = Color.Unspecified,
-    val chartPadding: Dp = 16.dp,
+    val chartPadding: Dp = 8.dp,
     val title: TitleSpecs = TitleSpecs(),
     val axis: AxisSpecs = AxisSpecs(),
     val grid: GridSpecs = GridSpecs(),

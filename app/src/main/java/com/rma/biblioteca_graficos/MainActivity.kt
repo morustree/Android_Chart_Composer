@@ -44,6 +44,7 @@ import com.rma.android_chart_composer.specs.PointSpecs
 import com.rma.android_chart_composer.specs.TextStyleSpecs
 import com.rma.android_chart_composer.specs.VerticalPosition
 import kotlinx.coroutines.delay
+import java.lang.Math.toRadians
 import kotlin.math.cos
 import kotlin.math.sin
 
@@ -56,7 +57,64 @@ class MainActivity : ComponentActivity() {
             Biblioteca_GraficosTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Column(modifier = Modifier.padding(innerPadding)) {
-                        var passoAnimacao by remember { mutableStateOf(0f) }
+
+                        val sineFunction = mutableListOf<Offset>()
+                        val phaseShift = mutableListOf<Offset>()
+                        for (degrees in 0..360 step 10) {
+                            val x = degrees.toFloat()
+
+                            val y1 = sin(toRadians(degrees.toDouble())).toFloat()
+                            sineFunction.add(Offset(x, y1))
+
+                            val y2 = sin(toRadians(degrees.toDouble() - 45.0)).toFloat()
+                            phaseShift.add(Offset(x, y2))
+                        }
+
+                        val chartSeries: List<ChartSeries> = listOf(
+                            ChartSeries(
+                                label = "Alpha Phase",
+                                pointSpecs = PointSpecs(color = Color.Blue, shape = MarkerShape.Square),
+                                data = sineFunction
+                            ),
+                            ChartSeries(
+                                label = "Beta Phase",
+                                pointSpecs = PointSpecs(color = Color.Red, shape = MarkerShape.Circle),
+                                data = phaseShift
+                            )
+                        )
+
+                        ScatterChart(
+                            series = chartSeries,
+                            modifier = Modifier.fillMaxSize(),
+                            specs = ChartSpecs(
+                                title = TitleSpecs(text = "Waves"),
+                                axis = AxisSpecs(
+                                    yAxisTitle = AxisTitleSpecs(
+                                        text = "y-axis",
+                                        orientation = AxisTitleOrientation.VerticalParallel
+                                    ),
+                                    xAxisTitle = AxisTitleSpecs(
+                                        text = "x-axis"
+                                    )
+                                ),
+                                grid = GridSpecs(color = Color.LightGray.copy(alpha = 0.4f)),
+                            )
+                        )
+
+
+                        // Plots a static Sine function using Kotlin's native math lambdas
+                        /*ScatterChart(
+                            mathematicalFunction = { x -> Math.sin(x) },
+                            minX = 0.0,
+                            maxX = 2.0 * Math.PI, // Plots a complete sine period (0 to 2π)
+                            steps = 100,          // Automatically computes 100 precise plotting points
+                            label = "Sine wave",
+                            showLines = true,
+                            modifier = Modifier.fillMaxWidth().height(350.dp)
+                        )*/
+
+
+                        /*var passoAnimacao by remember { mutableStateOf(0f) }
 
                         LaunchedEffect(Unit) {
                             while (true) {
@@ -104,7 +162,7 @@ class MainActivity : ComponentActivity() {
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height(350.dp)
-                        )
+                        )*/
 
                     }
                 }

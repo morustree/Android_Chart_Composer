@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.compose)
+    id("maven-publish")
 }
 
 android {
@@ -26,6 +27,23 @@ android {
         compose = true
     }
 
+    publishing {
+        singleVariant("release")
+    }
+}
+
+
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                from(components["release"])
+                groupId = "com.github.rafaelmrjgit"
+                artifactId = "android-chart-composer"
+                version = "1.0.0"
+            }
+        }
+    }
 }
 
 dependencies {
