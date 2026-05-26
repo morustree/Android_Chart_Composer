@@ -27,7 +27,7 @@ dependencyResolutionManagement {
 Add the dependency (build.gradle.kts):
 ```kotlin
 dependencies {
-	        implementation("com.github.rafaelmrjgit:Android_Chart_Composer:1.0.1")
+	        implementation("com.github.morustree:Android_Chart_Composer:1.0.2")
 }
  ```
 

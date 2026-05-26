@@ -38,9 +38,9 @@ afterEvaluate {
         publications {
             create<MavenPublication>("release") {
                 from(components["release"])
-                groupId = "com.github.rafaelmrjgit"
+                groupId = "com.github.morustree"
                 artifactId = "android-chart-composer"
-                version = "1.0.0"
+                version = "1.0.2"
             }
         }
     }
