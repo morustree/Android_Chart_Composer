@@ -11,6 +11,27 @@ A plotting library built natively in and for the Jetpack Compose environment. En
 
 ---
 
+## 📦 Installation
+
+Open your settings.gradle.kts file and add the JitPack URL at the end of the repositories block:
+```kotlin
+dependencyResolutionManagement {
+		repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+		repositories {
+			mavenCentral()
+			maven { url = uri("https://jitpack.io") }
+		}
+}
+```
+
+Add the dependency (build.gradle.kts):
+```kotlin
+dependencies {
+	        implementation("com.github.rafaelmrjgit:Android_Chart_Composer:1.0.1")
+}
+ ```
+
+
 ## ✨ Features
 
 *   **Native Compose Integration:** Designed with Composable functions, eliminating XML overhead and supporting smart recomposition out-of-the-box.
