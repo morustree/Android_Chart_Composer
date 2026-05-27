@@ -1,6 +1,7 @@
 package com.rma.benchmark
 
 import androidx.benchmark.macro.CompilationMode
+import androidx.benchmark.macro.FrameTimingMetric
 import androidx.benchmark.macro.StartupTimingMetric
 import androidx.benchmark.macro.junit4.MacrobenchmarkRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -23,33 +24,19 @@ import org.junit.runner.RunWith
  * for investigating your app's performance.
  */
 @RunWith(AndroidJUnit4::class)
-class DesempenhoGraficoTest {
+class ChartPerformanceTest {
 
-    @get:Rule
-    val benchmarkRule = MacrobenchmarkRule()
-
-    @Test
-    fun testarEstresseERenderizacaoDoGrafico() = benchmarkRule.measureRepeated(
-        packageName = "com.rma.biblioteca_graficos",
-        metrics = listOf(StartupTimingMetric()),
-        compilationMode = CompilationMode.None(),
-        iterations = 5
-    ) {
-        pressHome()
-        startActivityAndWait()
-
-        device.wait(Until.hasObject(By.pkg(packageName).depth(0)), 5000)
-
-        val xCentro = device.displayWidth / 2
-        val yCentro = device.displayHeight / 2
-
-        device.click(xCentro, yCentro)
-        Thread.sleep(300)
-
-        device.drag(xCentro + 200, yCentro, xCentro - 200, yCentro, 50)
-        Thread.sleep(300)
-
-        device.drag(xCentro - 200, yCentro, xCentro + 200, yCentro, 50)
-        Thread.sleep(500)
-    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
